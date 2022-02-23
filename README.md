@@ -22,3 +22,4 @@ To run your tests
 
 - Please follow the instructions specific to your 401 language, which can be found in the directory below, matching your course.
 - [array-reverse challenge](./javascript/code-challenges/array-reverse/README.md)
+- [array-insert-shift](./javascript/code-challenges/array-insert-shift/README.md)
