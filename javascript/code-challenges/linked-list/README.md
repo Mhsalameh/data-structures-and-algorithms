@@ -10,4 +10,4 @@ Big O -> time complexity O(1), Big O -> space complexity O(n)
 ## API
 1. insert: insert a new node to the linked list.
 2. includes: check if the linked list includes a value and return true if it's include and false if not.
-3. toString: retun a string that shows the components of the linked list as 
+3. toString: retun a string that shows the components of the linked list as string
