@@ -27,3 +27,4 @@ To run your tests
 - [linked-list](./javascript/code-challenges/linked-list/README.md)
 - [linked-list-insertion](./javascript/code-challenges/linked-list-insertions/README.md)
 - [linked-list-kth](./javascript/code-challenges/linked-list/README.md)
+- [stack-and-queue](./javascript/code-challenges/stack-and-queue)
