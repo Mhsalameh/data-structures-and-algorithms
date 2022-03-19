@@ -172,21 +172,29 @@ function zipLists(list1, list2) {
   return finalList;
 }
 
-// let list1 = new LinkedList();
+function isPalindrome(list) {
+  if (list.head) {
+    let currentNode = list.head;
+    let listArr = [];
+    let first = 0;
+    while (currentNode) {
+      listArr.push(currentNode.value);
+      currentNode = currentNode.next;
+    }
+    console.log(listArr);
+    let last = listArr.length - 1;
+    while (first <= last) {
+      if (listArr[first] !== listArr[last]) {
+        return false;
+      }
+      first++;
+      last--;
+    }
+    return true;
+  } else {
+    throw new Error('list is empty');
+  }
+}
 
-// let list2 = new LinkedList();
 
-// list1.append('a');
-// // console.log(zipLists(list1,list2).toString())
-// list2.append('b');
-// // console.log(zipLists(list1,list2).toString())
-// list2.append('d');
-// // console.log(zipLists(list1,list2).toString())
-// // console.log("111",list2.head)
-// // console.log("222",list1.head)
-// list1.append('c');
-// list1.append('e');
-// list2.append('g');
-// console.log(zipLists(list1,list2).toString());
-
-module.exports = { LinkedList: LinkedList, zipLists: zipLists };
+module.exports = { LinkedList: LinkedList, zipLists: zipLists, isPalindrome:isPalindrome };
