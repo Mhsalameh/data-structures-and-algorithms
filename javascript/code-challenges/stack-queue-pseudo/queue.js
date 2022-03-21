@@ -22,6 +22,7 @@ class PseudoQueue {
   dequeue() {
     if (this.stack1.length !== 0) {
       let poppedValue = this.stack1.pop();
+      this.front=this.stack1[this.stack1.length-1]?this.stack1[this.stack1.length-1]:null;
       return poppedValue;
     } else {
       console.log('PseudoQueue is empty');
@@ -42,3 +43,4 @@ console.log(q.dequeue());
 console.log(q);
 console.log(q.dequeue());
 console.log(q);
+module.exports = PseudoQueue;
