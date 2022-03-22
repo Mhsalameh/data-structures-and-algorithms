@@ -27,3 +27,4 @@ To run your tests
 - [linked-list](./javascript/code-challenges/linked-list/README.md)
 - [linked-list-insertion](./javascript/code-challenges/linked-list/README.md)
 - [stack-queue-pseudo](./javascript//code-challenges/stack-queue-pseudo/README.md)
+- [stack-queue-animalShelter](./javascript/code-challenges/stack-queue-animal-shelter/README.md)
