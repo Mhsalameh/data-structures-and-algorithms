@@ -25,6 +25,9 @@ To run your tests
 - [array-insert-shift](./javascript/code-challenges/array-insert-shift/README.md)
 - [array-binary-search](./javascript/code-challenges/array-binary-search/README.md)
 - [linked-list](./javascript/code-challenges/linked-list/README.md)
-- [linked-list-insertion](./javascript/code-challenges/linked-list/README.md)
+- [linked-list-insertion](./javascript/code-challenges/linked-list-insertions/README.md)
+- [linked-list-kth](./javascript/code-challenges/linked-list/README.md)
+- [stack-and-queue](./javascript/code-challenges/stack-and-queue)
 - [stack-queue-pseudo](./javascript//code-challenges/stack-queue-pseudo/README.md)
 - [stack-queue-animalShelter](./javascript/code-challenges/stack-queue-animal-shelter/README.md)
+
