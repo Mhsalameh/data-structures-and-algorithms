@@ -1,10 +1,11 @@
 # Trees
 
-
-
 ## Challenge
 
+trees:
+
 - Create a Binary Tree class
+
   - Define a method for each of the depth first traversals:
     - pre order
     - in order
@@ -19,6 +20,16 @@
   - Contains
     - Argument: value
     - Returns: boolean indicating whether or not the value is in the tree at least once.
+
+breadthFirst
+
+- Write a function called breadth first
+  - Arguments: tree
+  - Return: list of all values in the tree, in the order they were encountered
+
+## White board proccess
+
+![WB](./assets/class17.png)
 
 ## Approach & Efficiency
 
@@ -36,3 +47,6 @@ Space Complexity --> O(1), Time Complexity O(n);
     - preOrder method returns the values of tree nodes as traversed pre ordered
     - inOrder method returns the values of tree nodes as traversed in ordered
     - postOrder method returns the values of tree nodes as traversed post Ordered
+
+- breadthFirst function
+  - to traverse a tree using the breadth first method and return the traversed values in order

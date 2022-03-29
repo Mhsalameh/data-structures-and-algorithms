@@ -1,9 +1,14 @@
-'use strict';
+"use strict";
 
-const { it } = require('eslint/lib/rule-tester/rule-tester');
-const { BinaryTree, BinarySearchTree, Node } = require('../binaryTree.js');
+const { it } = require("eslint/lib/rule-tester/rule-tester");
+const {
+  BinaryTree,
+  BinarySearchTree,
+  Node,
+  breadthFirst,
+} = require("../binaryTree.js");
 let tree = null;
-describe('testing binaryTree', () => {
+describe("testing binaryTree", () => {
   let consoleSpy;
   beforeAll(() => {
     let one = new Node(1);
@@ -29,50 +34,50 @@ describe('testing binaryTree', () => {
   });
 
   beforeEach(() => {
-    consoleSpy = jest.spyOn(console, 'error').mockImplementation();
+    consoleSpy = jest.spyOn(console, "error").mockImplementation();
   });
 
   afterEach(() => {
     consoleSpy.mockRestore();
   });
 
-  it('initiaiting tree', () => {
+  it("initiaiting tree", () => {
     expect(tree.root.value).toEqual(1);
   });
 
-  it('testing preOrder', () => {
+  it("testing preOrder", () => {
     let expectedOutput = [1, 2, 6, 7, 8, 9, 3, 4, 5];
     let preOrder = tree.preOrder();
     expect(preOrder).toEqual(expectedOutput);
     let emptyTree = new BinaryTree();
     emptyTree.preOrder();
-    expect(consoleSpy).toHaveBeenCalledWith('error: tree is empty');
+    expect(consoleSpy).toHaveBeenCalledWith("error: tree is empty");
   });
 
-  it('inOrder', () => {
+  it("inOrder", () => {
     let expectedOutput = [6, 8, 7, 9, 2, 1, 4, 3, 5];
     let inOrder = tree.inOrder();
     expect(inOrder).toEqual(expectedOutput);
     let emptyTree = new BinaryTree();
     emptyTree.inOrder();
-    expect(consoleSpy).toHaveBeenCalledWith('error: tree is empty');
+    expect(consoleSpy).toHaveBeenCalledWith("error: tree is empty");
   });
 
-  it('postOrder', () => {
+  it("postOrder", () => {
     let expectedOutput = [8, 9, 7, 6, 2, 4, 5, 3, 1];
     let postOrder = tree.postOrder();
     expect(postOrder).toEqual(expectedOutput);
     let emptyTree = new BinaryTree();
     emptyTree.postOrder();
-    expect(consoleSpy).toHaveBeenCalledWith('error: tree is empty');
+    expect(consoleSpy).toHaveBeenCalledWith("error: tree is empty");
   });
 
-  it('initiaiting BST', () => {
+  it("initiaiting BST", () => {
     let bst = new BinarySearchTree();
     expect(bst.root).toBeNull();
   });
 
-  it('testint BST add', () => {
+  it("testint BST add", () => {
     let bst = new BinarySearchTree();
     bst.add(23);
     expect(bst.root.value).toEqual(23);
@@ -87,7 +92,7 @@ describe('testing binaryTree', () => {
     bst.add(105);
     expect(bst.inOrder()).toEqual([4, 8, 15, 16, 22, 23, 27, 42, 85, 105]);
   });
-  it('testing BST contains', () => {
+  it("testing BST contains", () => {
     let bst = new BinarySearchTree();
     let emptyBst = new BinarySearchTree();
     bst.add(23);
@@ -104,6 +109,24 @@ describe('testing binaryTree', () => {
     expect(bst.contains(106)).toBeFalsy();
     expect(bst.contains(22)).toBeTruthy();
     emptyBst.contains(1);
-    expect(consoleSpy).toHaveBeenCalledWith('tree is empty');
+    expect(consoleSpy).toHaveBeenCalledWith("tree is empty");
+  });
+  it("testing breadthFirst", () => {
+    let a = new Node("A");
+    let b = new Node("B");
+    let c = new Node("C");
+    let d = new Node("D");
+    let e = new Node("E");
+    let f = new Node("F");
+    b.left = d;
+    b.right = e;
+    a.left = b;
+    c.left = f;
+    a.right = c;
+    let bst = new BinaryTree(a);
+    console.log(typeof bst);
+    expect(breadthFirst(bst)).toEqual([ 'A', 'B', 'C', 'D', 'E', 'F' ]);
+    breadthFirst(a);
+    expect(consoleSpy).toHaveBeenCalledWith('tree argument should be a tree');
   });
 });
