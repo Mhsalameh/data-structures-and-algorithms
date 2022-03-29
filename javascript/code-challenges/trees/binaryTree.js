@@ -80,7 +80,7 @@ class BinarySearchTree extends BinaryTree {
   }
   contains(value) {
     function compare(node, value) {
-    //   console.log(node);
+      //   console.log(node);
       if (node.value === value) return true;
       if (node.value > value) {
         if (node.left) {
@@ -101,5 +101,26 @@ class BinarySearchTree extends BinaryTree {
   }
 }
 
+function breadthFirst(tree) {
+  if (tree.root) {
+    let result = [];
+    let queue = [tree.root];
+    while (queue[0]) {
+      let front = queue.shift();
+      result.push(front.value);
 
-module.exports = {BinaryTree: BinaryTree, BinarySearchTree: BinarySearchTree, Node:Node};
+      if (front.left) queue.push(front.left);
+      if (front.right) queue.push(front.right);
+    }
+    return result;
+  } else {
+    console.error("tree argument should be a tree");
+  }
+}
+
+module.exports = {
+  BinaryTree: BinaryTree,
+  BinarySearchTree: BinarySearchTree,
+  Node: Node,
+  breadthFirst: breadthFirst,
+};
