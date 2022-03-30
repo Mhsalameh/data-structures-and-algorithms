@@ -29,6 +29,10 @@ breadthFirst
 
 ## White board proccess
 
+treeMax:
+![WB](./assets/class16.png)
+
+breadthFirst
 ![WB](./assets/class17.png)
 
 ## Approach & Efficiency
@@ -48,5 +52,8 @@ Space Complexity --> O(1), Time Complexity O(n);
     - inOrder method returns the values of tree nodes as traversed in ordered
     - postOrder method returns the values of tree nodes as traversed post Ordered
 
+- treeMax
+  - travese in the tree to find the max number
+  
 - breadthFirst function
   - to traverse a tree using the breadth first method and return the traversed values in order

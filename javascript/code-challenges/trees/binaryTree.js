@@ -49,6 +49,21 @@ class BinaryTree {
       console.error("error: tree is empty");
     }
   }
+  treeMax() {
+    let max;
+    function traverse(root) {
+      if (root.value > max) max = root.value;
+      if (root.left) traverse(root.left);
+      if (root.right) traverse(root.right);
+    }
+    if (this.root) {
+      max = this.root.value;
+      traverse(this.root);
+      return max;
+    } else {
+      console.error("error: tree is empty");
+    }
+  }
 }
 
 class BinarySearchTree extends BinaryTree {
@@ -118,6 +133,20 @@ function breadthFirst(tree) {
   }
 }
 
+let bst = new BinarySearchTree();
+// let emptyBst = new BinarySearchTree();
+bst.add(23);
+// expect(bst.contains(8)).toBeFalsy();
+bst.add(8);
+bst.add(4);
+// bst.add(42);
+bst.add(16);
+bst.add(15);
+bst.add(27);
+// bst.add(85);
+bst.add(22);
+// bst.add(105);
+console.log(bst.treeMax());
 module.exports = {
   BinaryTree: BinaryTree,
   BinarySearchTree: BinarySearchTree,
