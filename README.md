@@ -34,3 +34,5 @@ To run your tests
 - [trees](./javascript/code-challenges/trees/README.md)
 - [treeMax](./javascript/code-challenges/trees/README.md#white-board-proccess)
 - [breadthFirst](./javascript/code-challenges/trees/README.md#white-board-proccess)
+- [fizzBuzz kary Tree](./javascript/code-challenges/trees/README.md#white-board-proccess)
+- [insertion-sort-blog](./javascript/code-challenges/insertion-sort/BLOG.md)
