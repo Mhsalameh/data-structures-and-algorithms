@@ -52,4 +52,15 @@ Nearly-sorted: [2,3,5,7,13,11]
 
 ## Whiteboard process
 
+![whiteboard](./assets/WB-28.png)
+
 ## Solutions
+
+to run the function just call it with an unsorted array,
+
+- quickSort([4,5,8,9,75,1,0,18],0,8) the returned value should be [0,1,4,5,8,9,18,75];
+
+```javascript
+console.log(quickSort([4, 5, 8, 9, 75, 1, 0, 18],0,8));
+// output: [0,1,4,5,8,9,18,75]
+```

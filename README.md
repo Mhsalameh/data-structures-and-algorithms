@@ -37,3 +37,4 @@ To run your tests
 - [fizzBuzz kary Tree](./javascript/code-challenges/trees/README.md#white-board-proccess)
 - [insertion-sort-blog](./javascript/code-challenges/insertion-sort/BLOG.md)
 - [merge-sort](./javascript/code-challenges/merge-sort/)
+- [quick-sort](./javascript/code-challenges/quick-sort/)
