@@ -38,3 +38,4 @@ To run your tests
 - [insertion-sort-blog](./javascript/code-challenges/insertion-sort/BLOG.md)
 - [merge-sort](./javascript/code-challenges/merge-sort/)
 - [quick-sort](./javascript/code-challenges/quick-sort/)
+- [hashtable](./javascript/code-challenges/hashtable/)
