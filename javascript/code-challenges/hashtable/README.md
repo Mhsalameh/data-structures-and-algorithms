@@ -28,7 +28,39 @@ Implement a Hashtable Class with the following methods:
 
 ## Approach & Efficiency
 
-<!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
+- **HashMap class**:
+
+  - T:O(1) --> to create the HashMap there is no iteration
+  - S:O(n) --> we created a new array of size n
+
+- **hash method**:
+
+  - T:O(n) --> we are iterating an n = string.length number of time to find the indx val
+  - S:O(1) --> we didn't add anything new to the memory
+
+- **Set method**:
+
+  - T:O(n) --> we are iterating throught a linked list of length n
+  - S:O(1) --> we are only adding a new node or new linked list of one value
+
+- **contains method**:
+
+  - T:O(n) --> we are iterating through a linked list of length = n
+  - S:O(1) --> we didn't add anything new to the memory
+
+- **get method**:
+
+  - T:O(n) --> we are iterating through a linked list of length = n
+  - S:O(1) --> we didn't use any additional space in memory
+
+- **keys method**:
+
+  - T:O(n2) --> we are iterating through the map array of lenght = n, and each time we will iterate though a linked list of length = n (worst case)
+  - S:O(n) --> we created a new array of length = n
+
+- **repeated word function**:
+  - T:O(n) --> we are iterating throught an array
+  - S:O(n) --> we created an array of length n
 
 ## API
 

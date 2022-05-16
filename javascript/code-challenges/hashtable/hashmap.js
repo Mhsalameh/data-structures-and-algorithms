@@ -19,7 +19,7 @@ class HashMap {
 
   set(key, value) {
     let hashIdx = this.hash(key);
-    console.log({ hashIdx });
+    // console.log({ hashIdx });
     if (!this.map[hashIdx]) {
       this.map[hashIdx] = new LinkedList();
     }
@@ -68,4 +68,20 @@ class HashMap {
   }
 }
 
-module.exports = HashMap;
+function repeatedWord(string) {
+  if(typeof string!=='string') {
+    return console.error('input is not a string');
+  }
+  let wordsHashMap = new HashMap(10);
+  let stringAr = string.split(/\W+/);
+  for (let i = 0; i < stringAr.length; i++) {
+    if (wordsHashMap.contains(stringAr[i].toLowerCase())) return stringAr[i];
+    wordsHashMap.set(stringAr[i].toLowerCase(),1);
+  }
+  return console.error('no repeated words found');
+}
+let string =
+  "It was a queer, sultry summer, the summer they electrocuted the Rosenbergs, and I didn’t know what I was doing in New York...";
+
+console.log(repeatedWord(string));
+module.exports = {HashMap,repeatedWord};
