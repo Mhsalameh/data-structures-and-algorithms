@@ -39,3 +39,4 @@ To run your tests
 - [merge-sort](./javascript/code-challenges/merge-sort/)
 - [quick-sort](./javascript/code-challenges/quick-sort/)
 - [hashtable](./javascript/code-challenges/hashtable/)
+- [repeated words](./javascript/code-challenges/hashtable/repeated-words.md)

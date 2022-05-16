@@ -69,19 +69,19 @@ class HashMap {
 }
 
 function repeatedWord(string) {
+  if(typeof string!=='string') {
+    return console.error('input is not a string');
+  }
   let wordsHashMap = new HashMap(10);
   let stringAr = string.split(/\W+/);
   for (let i = 0; i < stringAr.length; i++) {
-    if (wordsHashMap.contains(stringAr[i])) return stringAr[i];
-    wordsHashMap.set(stringAr[i], wordsHashMap.contains(stringAr[i]) ? 2 : 1);
+    if (wordsHashMap.contains(stringAr[i].toLowerCase())) return stringAr[i];
+    wordsHashMap.set(stringAr[i].toLowerCase(),1);
   }
-  // stringAr.forEach((word)=>{
-  //   console.log(word)
-  //   console.log( wordsHashMap.get(word));
-  // });
+  return console.error('no repeated words found');
 }
 let string =
   "It was a queer, sultry summer, the summer they electrocuted the Rosenbergs, and I didn’t know what I was doing in New York...";
 
 console.log(repeatedWord(string));
-module.exports = HashMap;
+module.exports = {HashMap,repeatedWord};

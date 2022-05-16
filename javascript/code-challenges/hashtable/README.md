@@ -54,8 +54,13 @@ Implement a Hashtable Class with the following methods:
   - S:O(1) --> we didn't use any additional space in memory
 
 - **keys method**:
+
   - T:O(n2) --> we are iterating through the map array of lenght = n, and each time we will iterate though a linked list of length = n (worst case)
   - S:O(n) --> we created a new array of length = n
+
+- **repeated word function**:
+  - T:O(n) --> we are iterating throught an array
+  - S:O(n) --> we created an array of length n
 
 ## API
 
