@@ -1,6 +1,6 @@
 "use strict";
 
-const LinkedList = require("./ll");
+const LinkedList = require('./ll');
 class HashMap {
   constructor(size) {
     this.size = size;
@@ -8,6 +8,7 @@ class HashMap {
   }
 
   hash(key) {
+    key = typeof key !== 'string'? key.toString():key;
     return (
       (key.split("").reduce((acc, char) => {
         return acc + char.charCodeAt();

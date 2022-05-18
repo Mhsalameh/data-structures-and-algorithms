@@ -1,14 +1,10 @@
-"use strict";
-const treeIntersection = require('../treeIntersection');
-const {
-  BinaryTree,
-  Node,
-  breadthFirst,
-} = require("../../trees/binaryTree");
+'use strict';
+const commonTreeValues = require('../treeIntersection');
+const { BinaryTree, Node } = require('../../trees/binaryTree');
 let tree = null;
 let tree2 = null;
 let tree3 = null;
-describe("testing binaryTree", () => {
+describe('testing binaryTree', () => {
   beforeAll(() => {
     let one = new Node(1);
     let two = new Node(2);
@@ -68,19 +64,18 @@ describe("testing binaryTree", () => {
     three3.right = five3;
 
     tree = new BinaryTree(one);
-    tree2= new BinaryTree(one2);
+    tree2 = new BinaryTree(one2);
     tree3 = new BinaryTree(one3);
   });
 
-  it("Testing intersection",()=>{
-    let result = treeIntersection(tree,tree2);
+  it('Testing intersection', () => {
+    let result = commonTreeValues(tree, tree2);
     console.log(result);
-    expect(result).toStrictEqual([1,7,3,5]);
-    result = treeIntersection(tree,tree3);
+    expect(result).toStrictEqual([1, 7, 3, 5]);
+    result = commonTreeValues(tree, tree3);
     expect(result).toStrictEqual([]);
     let tree4 = null;
-    result = treeIntersection(tree,tree4);
+    result = commonTreeValues(tree, tree4);
     expect(result).toBeNull();
   });
-
 });
