@@ -40,3 +40,4 @@ To run your tests
 - [quick-sort](./javascript/code-challenges/quick-sort/)
 - [hashtable](./javascript/code-challenges/hashtable/)
 - [repeated words](./javascript/code-challenges/hashtable/repeated-words.md)
+- [common tree values](./javascript/code-challenges/tree-intersection/README.md)
