@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 const LinkedList = require('./ll');
 class HashMap {
@@ -8,9 +8,9 @@ class HashMap {
   }
 
   hash(key) {
-    key = typeof key !== 'string'? key.toString():key;
+    key = typeof key !== 'string' ? key.toString() : key;
     return (
-      (key.split("").reduce((acc, char) => {
+      (key.split('').reduce((acc, char) => {
         return acc + char.charCodeAt();
       }, 0) *
         599) %
@@ -70,19 +70,40 @@ class HashMap {
 }
 
 function repeatedWord(string) {
-  if(typeof string!=='string') {
+  if (typeof string !== 'string') {
     return console.error('input is not a string');
   }
   let wordsHashMap = new HashMap(10);
   let stringAr = string.split(/\W+/);
   for (let i = 0; i < stringAr.length; i++) {
     if (wordsHashMap.contains(stringAr[i].toLowerCase())) return stringAr[i];
-    wordsHashMap.set(stringAr[i].toLowerCase(),1);
+    wordsHashMap.set(stringAr[i].toLowerCase(), 1);
   }
   return console.error('no repeated words found');
 }
-let string =
-  "It was a queer, sultry summer, the summer they electrocuted the Rosenbergs, and I didn’t know what I was doing in New York...";
 
-console.log(repeatedWord(string));
-module.exports = {HashMap,repeatedWord};
+function leftJoin(hashmap1, hashmap2) {
+  let list = [];
+  console.log(111111, hashmap1.keys());
+  for (let element of hashmap1.keys()) {
+    let key = Object.keys(element[0])[0];
+    if (hashmap2.contains(key)) {
+      list.push([key, hashmap1.get(key), hashmap2.get(key)]);
+    } else {
+      list.push([key, hashmap1.get(key), null]);
+    }
+  }
+  return list;
+}
+
+let hash1 = new HashMap(4);
+let hash2 = new HashMap(4);
+hash1.set('mohammad', 'k');
+hash1.set('khalid', 'k');
+hash1.set('mosab', 'k');
+hash2.set('mohammad', 'k');
+hash2.set('ahmad', 'k');
+hash2.set('khalid', 'k');
+
+console.log(leftJoin(hash1, hash2));
+module.exports = { HashMap, repeatedWord, leftJoin };
