@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-const LinkedList = require('./ll');
+const LinkedList = require("./ll");
 class HashMap {
   constructor(size) {
     this.size = size;
@@ -8,9 +8,9 @@ class HashMap {
   }
 
   hash(key) {
-    key = typeof key !== 'string' ? key.toString() : key;
+    key = typeof key !== "string" ? key.toString() : key;
     return (
-      (key.split('').reduce((acc, char) => {
+      (key.split("").reduce((acc, char) => {
         return acc + char.charCodeAt();
       }, 0) *
         599) %
@@ -25,7 +25,22 @@ class HashMap {
       this.map[hashIdx] = new LinkedList();
     }
     let entryData = { [key]: value };
-    this.map[hashIdx].append(entryData);
+    if (!this.contains(key)) {
+      this.map[hashIdx].append(entryData);
+    } else {
+      // console.log(key);
+
+      let items = this.map[hashIdx];
+      let cur = items.head;
+      while (cur) {
+        if (cur.value[key]) {
+          cur.value[key] = value;
+          break;
+        } else {
+          cur = cur.next;
+        }
+      }
+    }
   }
 
   contains(key) {
@@ -70,8 +85,8 @@ class HashMap {
 }
 
 function repeatedWord(string) {
-  if (typeof string !== 'string') {
-    return console.error('input is not a string');
+  if (typeof string !== "string") {
+    return console.error("input is not a string");
   }
   let wordsHashMap = new HashMap(10);
   let stringAr = string.split(/\W+/);
@@ -79,7 +94,7 @@ function repeatedWord(string) {
     if (wordsHashMap.contains(stringAr[i].toLowerCase())) return stringAr[i];
     wordsHashMap.set(stringAr[i].toLowerCase(), 1);
   }
-  return console.error('no repeated words found');
+  return console.error("no repeated words found");
 }
 
 function leftJoin(hashmap1, hashmap2) {
@@ -96,14 +111,46 @@ function leftJoin(hashmap1, hashmap2) {
   return list;
 }
 
-let hash1 = new HashMap(4);
-let hash2 = new HashMap(4);
-hash1.set('mohammad', 'k');
-hash1.set('khalid', 'k');
-hash1.set('mosab', 'k');
-hash2.set('mohammad', 'k');
-hash2.set('ahmad', 'k');
-hash2.set('khalid', 'k');
+function mostRepeated(string) {
+  let stringAr = string.split(/\W+/);
+  let newHash = new HashMap(10);
+  for (let i = 0; i < stringAr.length; i++) {
+    if (newHash.contains(stringAr[i].toLowerCase())) {
+      newHash.set(
+        stringAr[i].toLowerCase(),
+        newHash.get(stringAr[i].toLowerCase()) + 1
+      );
+    } else {
+      newHash.set(stringAr[i].toLowerCase(), 1);
+    }
+  }
+  let mostRepeatedWord = "";
+  let max = 0;
+  for (let i = 1; i < stringAr.length; i++) {
+    if (
+      newHash.get(stringAr[max].toLowerCase()) >=
+      newHash.get(stringAr[i].toLowerCase())
+    ) {
+      mostRepeatedWord = stringAr[max];
+    } else {
+      mostRepeatedWord = stringAr[i];
+      max = i;
+      // console.log(mostRepeatedWord);
+    }
+  }
+  return mostRepeatedWord;
+}
 
-console.log(leftJoin(hash1, hash2));
+// let hash1 = new HashMap(4);
+// let hash2 = new HashMap(4);
+// hash1.set("mohammad", "k");
+// hash1.set("khalid", "k");
+// hash1.set("mosab", "k");
+// hash2.set("mohammad", "k");
+// hash2.set("ahmad", "k");
+// hash2.set("khalid", "k");
+let string =
+  "ana w a5i w a5i shawqon yadfa3one le le le araha ome thekra la ansaha a5i a5i le thekra thekra";
+console.log(mostRepeated(string));
+// console.log(leftJoin(hash1, hash2));
 module.exports = { HashMap, repeatedWord, leftJoin };
