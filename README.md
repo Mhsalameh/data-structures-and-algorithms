@@ -41,3 +41,4 @@ To run your tests
 - [hashtable](./javascript/code-challenges/hashtable/)
 - [repeated words](./javascript/code-challenges/hashtable/repeated-words.md)
 - [common tree values](./javascript/code-challenges/tree-intersection/README.md)
+- [graph](./javascript/code-challenges/graph/README.md)
