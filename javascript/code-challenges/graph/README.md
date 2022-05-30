@@ -21,24 +21,30 @@ Implement your own Graph. The graph should be represented as an adjacency list, 
 - size
   - Arguments : nothing
   - returns: the number of nodes in the graph
+- breadthFirst
+  - arguments: starting node
+  - returns: and array of available nodes
 
 ## Approach & Efficiency
 
 - add node:
-  - T: O(1)
-  - S: O(1)
+  - T: O(1) - we are adding to an array, so it is constant time
+  - S: O(1) - we are adding to an array, so it is constant space
 - add edge:
-  - T: O(1)
-  - S: O(1)
+  - T: O(1) - we are adding to an array, so it is constant time
+  - S: O(1) - we are adding to an array, so it is constant space
 - get nodes
-  - T: O(n)
-  - S: O(n)
+  - T: O(n) - we are iterating through the array, so it is linear time
+  - S: O(n) - we are creating an array, so it is linear space
 - get neighbors
-  - T: O(n)
-  - S: O(n)
+  - T: O(n) - we are iterating through the array, so it is linear time
+  - S: O(n) - we are creating an array, so it is linear space
 - size:
-  - T: O(1)
-  - S: O(1)
+  - T: O(1) - we are reading from an array, so it is constant time
+  - S: O(1) - we didnt create any new data structures, so it is constant space
+- breadthFirst
+  - T: O(n2) - we are visting each node twice in the worst case, so it is quadratic time
+  - S: O(n) - we created a new array of length n to store the nodes, so it is linear space
 
 ## API
 
@@ -49,3 +55,8 @@ class : Graph
 - getNodes: return an array of nodes
 - getNeighbors: return an array of neighbors of a node
 - size: return the number of nodes in the graph
+- breadthFirst: return an array of nodes in breadth first order
+
+## Whiteboarding
+
+![breadth first order iteration on graph](./assets/WB36.png)

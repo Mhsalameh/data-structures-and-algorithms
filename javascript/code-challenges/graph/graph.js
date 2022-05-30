@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 "use strict";
 
 const Vertex = require("./vertex");
@@ -28,7 +29,14 @@ class Graph {
     return Array.from(this.adjacencyList.keys());
   }
 
+  size() {
+    if (!this.adjacencyList.size) {
+      return 0;
+    }
+    return this.adjacencyList.size;
+  }
   bft(startNode) {
+    if (!startNode) return null;
     let queue = [];
     let visitedNodes = new Set();
 
@@ -39,7 +47,6 @@ class Graph {
     while (queue.length) {
       const currentNode = queue.shift();
       const neighbors = this.getNeighbors(currentNode);
-      console.log(111111, neighbors);
       for (let neighbor of neighbors) {
         const neighborNode = neighbor.vertex;
         if (visitedNodes.has(neighborNode)) {
@@ -52,13 +59,6 @@ class Graph {
       }
     }
     return result;
-  }
-
-  size() {
-    if (!this.adjacencyList.size) {
-      return 0;
-    }
-    return this.adjacencyList.size;
   }
 }
 
@@ -89,5 +89,5 @@ graph.addEdge(vertex4, vertex6, 2);
 graph.addEdge(vertex5, vertex6, 2);
 
 console.log(graph.bft(vertex1));
-console.log(graph.getNodes());
+// console.log(graph.getNodebfs());
 module.exports = Graph;

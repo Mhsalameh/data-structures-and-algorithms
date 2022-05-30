@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 const Edge = require("../edge");
 
 describe("testing Edge", () => {
