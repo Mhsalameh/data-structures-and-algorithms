@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 const Graph = require("../graph");
 
 describe("testing Graph", () => {
@@ -51,25 +52,6 @@ describe("testing Graph", () => {
     graph.addNode("F");
     expect(graph.getNodes()).toEqual(["A", "B", "C", "D", "E", "F"]);
   });
-  it("testing bft", () => {
-    let graph = new Graph();
-    graph.addNode("A");
-    graph.addNode("B");
-    graph.addNode("C");
-    graph.addNode("D");
-    graph.addNode("E");
-    graph.addNode("F");
-    graph.addEdge("A", "B", 1);
-    graph.addEdge("A", "C", 1);
-    graph.addEdge("B", "D", 1);
-    graph.addEdge("B", "E", 1);
-    graph.addEdge("C", "D", 1);
-    graph.addEdge("C", "E", 1);
-    graph.addEdge("D", "E", 1);
-    graph.addEdge("D", "F", 1);
-    graph.addEdge("E", "F", 1);
-    expect(graph.bft("A")).toEqual(["A", "B", "C", "D", "E", "F"]);
-  });
   it("testing size", () => {
     let graph = new Graph();
     expect(graph.size()).toBe(0);
@@ -89,5 +71,25 @@ describe("testing Graph", () => {
     graph.addEdge("D", "F", 1);
     graph.addEdge("E", "F", 1);
     expect(graph.size()).toBe(6);
+  });
+  it("testing bft", () => {
+    let graph = new Graph();
+    expect(graph.bft()).toBeNull();
+    graph.addNode("A");
+    graph.addNode("B");
+    graph.addNode("C");
+    graph.addNode("D");
+    graph.addNode("E");
+    graph.addNode("F");
+    graph.addEdge("A", "B", 1);
+    graph.addEdge("A", "C", 1);
+    graph.addEdge("B", "D", 1);
+    graph.addEdge("B", "E", 1);
+    graph.addEdge("C", "D", 1);
+    graph.addEdge("C", "E", 1);
+    graph.addEdge("D", "E", 1);
+    graph.addEdge("D", "F", 1);
+    graph.addEdge("E", "F", 1);
+    expect(graph.bft("A")).toEqual(["A", "B", "C", "D", "E", "F"]);
   });
 });
