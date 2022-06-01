@@ -61,6 +61,40 @@ class Graph {
     return result;
   }
 }
+//create a function that takes in a graph and an array of city names
+//return the total cost of the trip
+//edge cases: if start or end is not in the graph, return null
+//            if start and end are the same, return 0
+//            if start and end are not connected, return null
+//            if start and end are connected, return the total cost of the trip
+function businessTrip(graph, cities) {
+  let start = cities[0];
+  let end = cities[cities.length - 1];
+  let totalCost = 0;
+  let visited = new Set();
+  let queue = [];
+  let currentCity = start;
+  queue.push(currentCity);
+  visited.add(currentCity);
+  while (queue.length) {
+    currentCity = queue.shift();
+    if (currentCity === end) {
+      return totalCost;
+    }
+    let neighbors = graph.getNeighbors(currentCity);
+    for (let neighbor of neighbors) {
+      let neighborNode = neighbor.vertex;
+      if (visited.has(neighborNode)) {
+        continue;
+      } else {
+        visited.add(neighborNode);
+        queue.push(neighborNode);
+        totalCost += neighbor.weight;
+      }
+    }
+  }
+  return null;
+}
 
 let graph = new Graph();
 let vertex1 = new Vertex("A");
@@ -87,7 +121,8 @@ graph.addEdge(vertex3, vertex5, 3);
 graph.addEdge(vertex4, vertex5, 3);
 graph.addEdge(vertex4, vertex6, 2);
 graph.addEdge(vertex5, vertex6, 2);
-
-console.log(graph.bft(vertex1));
+// console.log(graph.adjacencyList.has(vertex7));
+console.log(businessTrip(graph, [vertex1, vertex4]));
+// console.log(graph.bft(vertex1));
 // console.log(graph.getNodebfs());
 module.exports = Graph;
