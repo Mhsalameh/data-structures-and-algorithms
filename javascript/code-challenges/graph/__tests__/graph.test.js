@@ -1,5 +1,5 @@
 /* eslint-disable quotes */
-const Graph = require("../graph");
+const { Graph, businessTrip } = require("../graph");
 
 describe("testing Graph", () => {
   let consoleSpy;
@@ -91,5 +91,34 @@ describe("testing Graph", () => {
     graph.addEdge("D", "F", 1);
     graph.addEdge("E", "F", 1);
     expect(graph.bft("A")).toEqual(["A", "B", "C", "D", "E", "F"]);
+  });
+
+  it("testing businessTrip", () => {
+    let graph = new Graph();
+    graph.addNode("Las Vegas");
+    graph.addNode("Denver");
+    graph.addNode("Phoenix");
+    graph.addNode("Dallas");
+    graph.addNode("Seattle");
+    graph.addEdge("Las Vegas", "Denver", 100);
+    graph.addEdge("Las Vegas", "Phoenix", 50);
+    graph.addEdge("Las Vegas", "Dallas", 250);
+    graph.addEdge("Denver", "Phoenix", 110);
+    graph.addEdge("Denver", "Dallas", 190);
+    graph.addEdge("Dallas", "Phoenix", 80);
+    graph.addEdge("Dallas", "Seattle", 300);
+    graph.addEdge("Phoenix", "Seattle", 120);
+    expect(
+      businessTrip(graph, [
+        "Las Vegas",
+        "Denver",
+        "Dallas",
+        "Seattle",
+        "Phoenix",
+      ])
+    ).toBe(-1);
+    expect(
+      businessTrip(graph, ["Las Vegas", "Denver", "Dallas", "Seattle"])
+    ).toBe(590);
   });
 });
