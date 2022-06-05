@@ -24,6 +24,12 @@ Implement your own Graph. The graph should be represented as an adjacency list, 
 - breadthFirst
   - arguments: starting node
   - returns: and array of available nodes
+- businessTrip
+  - arguments: graph, array of cities
+  - returns: cost of the trip
+- depthFirst
+  - arguments: starting node
+  - returns: an array of available nodes
 
 ## Approach & Efficiency
 
@@ -42,14 +48,15 @@ Implement your own Graph. The graph should be represented as an adjacency list, 
 - size:
   - T: O(1) - we are reading from an array, so it is constant time
   - S: O(1) - we didnt create any new data structures, so it is constant space
-- breadthFirst
-
+- breadthFirst:
   - T: O(n2) - we are visting each node twice in the worst case, so it is quadratic time
   - S: O(n) - we created a new array of length n to store the nodes, so it is linear space
-
-- businessTrip
+- businessTrip:
   - Time complexity: O(n) we visit each node once
   - space complexity: O(1) we didnt create any new data structures
+- depthFirst:
+  - Time complexity: O(n) we visit each node once
+  - space complexity: O(n) we created a new array of length n to store the nodes, so it is linear space
 
 ## API
 
@@ -62,6 +69,7 @@ class : Graph
 - size: return the number of nodes in the graph
 - breadthFirst: return an array of nodes in breadth first order
 - businessTrip : return the cost of a business trip
+- depthFirst: return an array of nodes in depth first order
 
 ## Whiteboarding
 
@@ -70,3 +78,6 @@ class : Graph
 
 - businessTrip:
   ![business trip](./assets/WB37.png)
+
+- depthFirst
+  ![depth first order iteration on graph](./assets/WB38.png)

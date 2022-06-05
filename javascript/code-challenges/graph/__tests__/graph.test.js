@@ -121,4 +121,26 @@ describe("testing Graph", () => {
       businessTrip(graph, ["Las Vegas", "Denver", "Dallas", "Seattle"])
     ).toBe(590);
   });
+
+  it("testing dfs", () => {
+    let graph = new Graph();
+    expect(graph.dfs()).toBeNull();
+    graph.addNode("A");
+    graph.addNode("B");
+    graph.addNode("C");
+    graph.addNode("D");
+    graph.addNode("E");
+    graph.addNode("F");
+    graph.addEdge("A", "B", 1);
+    graph.addEdge("A", "C", 1);
+    graph.addEdge("B", "D", 1);
+    graph.addEdge("B", "E", 1);
+    graph.addEdge("C", "D", 1);
+    graph.addEdge("C", "E", 1);
+    graph.addEdge("D", "E", 1);
+    graph.addEdge("D", "F", 1);
+    graph.addEdge("E", "F", 1);
+    expect(graph.dfs("A")).toEqual(["A", "B", "C", "D", "E", "F"]);
+    expect(graph.dfs("B")).toEqual(["B", "D", "E", "F"]);
+  });
 });
