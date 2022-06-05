@@ -67,6 +67,8 @@ class Graph {
 // the cost of the trip is the sum of the weights of the edges in the path
 // if the path is not possible, return -1
 // if the path is possible, but there is no edge between two cities, return -1
+//examples of the path
+
 function businessTrip(graph, path) {
   let cost = 0;
   for (let i = 0; i < path.length - 1; i++) {
