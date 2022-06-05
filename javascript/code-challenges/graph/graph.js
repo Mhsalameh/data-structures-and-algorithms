@@ -60,6 +60,34 @@ class Graph {
     }
     return result;
   }
+
+  //Conduct a depth first preorder traversal on a graph
+
+  dfs(startNode) {
+    if (!startNode) return null;
+    let stack = [];
+    let visitedNodes = new Set();
+
+    stack.push(startNode);
+    visitedNodes.add(startNode);
+
+    let result = [startNode];
+    while (stack.length) {
+      const currentNode = stack.pop();
+      const neighbors = this.getNeighbors(currentNode);
+      for (let neighbor of neighbors) {
+        const neighborNode = neighbor.vertex;
+        if (visitedNodes.has(neighborNode)) {
+          continue;
+        } else {
+          result.push(neighborNode);
+          visitedNodes.add(neighborNode);
+        }
+        stack.push(neighborNode);
+      }
+    }
+    return result;
+  }
 }
 // create a function called buisnessTrip that takes in a graph and an array of strings
 // the strings are the names of the cities in your path
@@ -80,6 +108,7 @@ function businessTrip(graph, path) {
   }
   return cost;
 }
+
 let graph = new Graph();
 graph.addNode("Las Vegas");
 graph.addNode("Denver");
@@ -100,4 +129,5 @@ console.log(businessTrip(graph, ["Las Vegas", "Denver", "Dallas", "Seattle"]));
 console.log(
   businessTrip(graph, ["Las Vegas", "Denver", "Dallas", "Seattle", "Phoenix"])
 );
+console.log(graph.dfs("Las Vegas"));
 module.exports = { Graph, businessTrip };
