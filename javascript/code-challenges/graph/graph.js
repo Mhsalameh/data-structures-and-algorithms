@@ -1,7 +1,6 @@
 /* eslint-disable quotes */
 "use strict";
 
-const Vertex = require("./vertex");
 const Edge = require("./edge");
 
 class Graph {
@@ -22,6 +21,7 @@ class Graph {
   }
 
   getNeighbors(node) {
+    if (!this.adjacencyList.has(node)) return null;
     return this.adjacencyList.get(node);
   }
 
@@ -61,68 +61,43 @@ class Graph {
     return result;
   }
 }
-//create a function that takes in a graph and an array of city names
-//return the total cost of the trip
-//edge cases: if start or end is not in the graph, return null
-//            if start and end are the same, return 0
-//            if start and end are not connected, return null
-//            if start and end are connected, return the total cost of the trip
-function businessTrip(graph, cities) {
-  let start = cities[0];
-  let end = cities[cities.length - 1];
-  let totalCost = 0;
-  let visited = new Set();
-  let queue = [];
-  let currentCity = start;
-  queue.push(currentCity);
-  visited.add(currentCity);
-  while (queue.length) {
-    currentCity = queue.shift();
-    if (currentCity === end) {
-      return totalCost;
-    }
-    let neighbors = graph.getNeighbors(currentCity);
-    for (let neighbor of neighbors) {
-      let neighborNode = neighbor.vertex;
-      if (visited.has(neighborNode)) {
-        continue;
-      } else {
-        visited.add(neighborNode);
-        queue.push(neighborNode);
-        totalCost += neighbor.weight;
-      }
-    }
+// create a function called buisnessTrip that takes in a graph and an array of strings
+// the strings are the names of the cities in your path
+// the function should return the cost of the trip
+// the cost of the trip is the sum of the weights of the edges in the path
+// if the path is not possible, return -1
+// if the path is possible, but there is no edge between two cities, return -1
+//examples of the path
+
+function businessTrip(graph, path) {
+  let cost = 0;
+  for (let i = 0; i < path.length - 1; i++) {
+    let start = path[i];
+    let end = path[i + 1];
+    let edge = graph.getNeighbors(start).find((edge) => edge.vertex === end);
+    if (!edge) return -1;
+    cost += edge.weight;
   }
-  return null;
+  return cost;
 }
-
 let graph = new Graph();
-let vertex1 = new Vertex("A");
-let vertex2 = new Vertex("B");
-let vertex3 = new Vertex("C");
-let vertex4 = new Vertex("D");
-let vertex5 = new Vertex("E");
-let vertex6 = new Vertex("F");
+graph.addNode("Las Vegas");
+graph.addNode("Denver");
+graph.addNode("Phoenix");
+graph.addNode("Dallas");
+graph.addNode("Seattle");
+graph.addEdge("Las Vegas", "Denver", 100);
+graph.addEdge("Las Vegas", "Phoenix", 50);
+graph.addEdge("Las Vegas", "Dallas", 250);
+graph.addEdge("Denver", "Phoenix", 110);
+graph.addEdge("Denver", "Dallas", 190);
+graph.addEdge("Dallas", "Phoenix", 80);
+graph.addEdge("Dallas", "Seattle", 300);
+graph.addEdge("Phoenix", "Seattle", 120);
 
-graph.addNode(vertex1);
-graph.addNode(vertex2);
-graph.addNode(vertex3);
-graph.addNode(vertex4);
-graph.addNode(vertex5);
-graph.addNode(vertex6);
-
-graph.addEdge(vertex1, vertex2, 4);
-graph.addEdge(vertex1, vertex3, 2);
-graph.addEdge(vertex2, vertex4, 3);
-graph.addEdge(vertex2, vertex5, 2);
-graph.addEdge(vertex2, vertex3, 2);
-graph.addEdge(vertex3, vertex4, 2);
-graph.addEdge(vertex3, vertex5, 3);
-graph.addEdge(vertex4, vertex5, 3);
-graph.addEdge(vertex4, vertex6, 2);
-graph.addEdge(vertex5, vertex6, 2);
-// console.log(graph.adjacencyList.has(vertex7));
-console.log(businessTrip(graph, [vertex1, vertex4]));
-// console.log(graph.bft(vertex1));
-// console.log(graph.getNodebfs());
-module.exports = Graph;
+console.log(businessTrip(graph, ["Las Vegas", "Denver", "Dallas", "Seattle"]));
+//output:-1
+console.log(
+  businessTrip(graph, ["Las Vegas", "Denver", "Dallas", "Seattle", "Phoenix"])
+);
+module.exports = { Graph, businessTrip };

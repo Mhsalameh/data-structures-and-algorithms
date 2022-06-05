@@ -43,8 +43,13 @@ Implement your own Graph. The graph should be represented as an adjacency list, 
   - T: O(1) - we are reading from an array, so it is constant time
   - S: O(1) - we didnt create any new data structures, so it is constant space
 - breadthFirst
+
   - T: O(n2) - we are visting each node twice in the worst case, so it is quadratic time
   - S: O(n) - we created a new array of length n to store the nodes, so it is linear space
+
+- businessTrip
+  - Time complexity: O(n) we visit each node once
+  - space complexity: O(1) we didnt create any new data structures
 
 ## API
 
@@ -56,7 +61,12 @@ class : Graph
 - getNeighbors: return an array of neighbors of a node
 - size: return the number of nodes in the graph
 - breadthFirst: return an array of nodes in breadth first order
+- businessTrip : return the cost of a business trip
 
 ## Whiteboarding
 
-![breadth first order iteration on graph](./assets/WB36.png)
+- breadth first order:
+  ![breadth first order iteration on graph](./assets/WB36.png)
+
+- businessTrip:
+  ![business trip](./assets/WB37.png)
